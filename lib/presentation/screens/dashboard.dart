@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_dev_flutter_task/blocs/crypto/crypto_bloc.dart';
 import 'package:get_dev_flutter_task/config/app_colors.dart';
 import 'package:get_dev_flutter_task/config/app_spacing.dart';
 import 'package:get_dev_flutter_task/extensions/build_context.dart';
+import 'package:get_dev_flutter_task/presentation/screens/transactions.dart';
 import 'package:get_dev_flutter_task/presentation/widgets/crypto_asset_grid_item.dart';
 import 'package:get_dev_flutter_task/presentation/widgets/crypto_asset_list_item.dart';
 
@@ -127,11 +130,17 @@ class DashboardScreen extends HookWidget {
               ),
               child: Column(
                 children: [
-                  const CryptoAssetListItem(
+                  CryptoAssetListItem(
                     currency: 'btc',
                     name: 'Bitcoin',
                     amount: '₦24,500.00',
                     gain: 1.76,
+                    onPressed: () {
+                      context
+                          .read<CryptoBloc>()
+                          .add(const CryptoEvent.fetchBTCTransactions());
+                      context.navigator.pushNamed(TransactionsScreen.routeName);
+                    },
                   ),
                   AppSpacing.verticalSpaceSmall,
                   const CryptoAssetListItem(

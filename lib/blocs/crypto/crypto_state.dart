@@ -4,6 +4,9 @@ part of 'crypto_bloc.dart';
 class CryptoState with _$CryptoState {
   const CryptoState._();
   const factory CryptoState([
-    String? token,
+    BTCBlock? btcBlock,
+    @Default(FormzStatus.pure) FormzStatus status,
+    String? errorMessage,
+    BTCBlockTransaction? selectedBtcBlockTransaction,
   ]) = _CryptoState;
 }

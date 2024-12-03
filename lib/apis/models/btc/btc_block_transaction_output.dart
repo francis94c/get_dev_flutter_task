@@ -6,7 +6,7 @@ part 'btc_block_transaction_output.g.dart';
 class BTCBlockTransactionOutput {
   int? type;
   bool? spent;
-  String? value;
+  int? value;
 
   BTCBlockTransactionOutput();
 

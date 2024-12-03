@@ -1,3 +1,4 @@
+import 'package:get_dev_flutter_task/apis/models/btc/btc_block.dart';
 import 'package:get_dev_flutter_task/apis/models/btc/latest_btc_block.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -10,4 +11,7 @@ abstract class BTCClient {
 
   @GET('latestblock')
   Future<LatestBTCBlock> getLatestBtcBlock();
+
+  @GET('rawblock/{block_hash}')
+  Future<BTCBlock> getBlockDetails(@Path('block_hash') String blockHash);
 }
